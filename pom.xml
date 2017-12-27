@@ -46,4 +46,61 @@
             </snapshots>
         </repository>
     </repositories>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.scm</groupId>
+                        <artifactId>maven-scm-provider-jgit</artifactId>
+                        <version>1.9.5</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.12</version>
+                <configuration>
+                    <message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
+                    <noJekyll>false</noJekyll>                                  <!-- disable webpage processing -->
+                    <outputDirectory>${local.distribution.repo}</outputDirectory> <!-- matches distribution management repository url above -->
+                    <branch>refs/heads/master</branch>                       <!-- remote branch name -->
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                    <repositoryName>maven</repositoryName>      <!-- github repo name -->
+                    <repositoryOwner>calm04061</repositoryOwner>    <!-- github username  -->
+                    <server>github</server>
+                    <merge>true</merge>
+                </configuration>
+                <executions>
+                    <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+                    <execution>
+                        <goals>
+                            <goal>site</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
