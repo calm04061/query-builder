@@ -11,6 +11,8 @@ import java.text.MessageFormat;
 @Support({
         @SupportType(classType = "java.lang.Integer", queryTypes = {"Eq", "Lt", "Gt", "Ge", "Le"}),
         @SupportType(classType = "java.lang.String", queryTypes = {"Eq", "StartWith", "EndWith"}),
+        @SupportType(classType = "java.lang.Long", queryTypes = {"Eq", "StartWith", "EndWith"}),
+        @SupportType(classType = "java.lang.Short", queryTypes = {"Eq", "StartWith", "EndWith"}),
         @SupportType(classType = "java.util.Date", queryTypes = {"Eq"}),
 })
 @AutoService(MethodBuilder.class)
@@ -35,7 +37,7 @@ public class SimpleMethodBuilder implements MethodBuilder {
         out.print("\t\tif(");
         out.print(fieldName);
         out.println("!= null) {");
-        out.print("\t\t\tand(new ");
+        out.print("\t\t\tand(new com.calm.entity.processor.");
         out.print(cond);
         out.print("QueryConditional(\"");
         out.print(fieldName);

@@ -14,7 +14,7 @@ import java.io.PrintWriter;
 import java.util.*;
 
 //@Entity
-@SupportedSourceVersion(SourceVersion.RELEASE_7)
+@SupportedSourceVersion(SourceVersion.RELEASE_6)
 @SupportedAnnotationTypes({
         "javax.persistence.Entity"
 })

@@ -1,4 +1,4 @@
-package com.calm.entity.processor;
+package com.calm.entity;
 
 import javax.persistence.Entity;
 import java.util.Date;

@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 
 @Support({
         @SupportType(classType = "java.lang.Integer", queryTypes = {"Between"}),
+        @SupportType(classType = "java.lang.Long", queryTypes = {"Between"}),
         @SupportType(classType = "java.util.Date", queryTypes = {"Between"}),
 })
 @AutoService(MethodBuilder.class)
@@ -34,7 +35,7 @@ public class BetweenMethodBuilder implements MethodBuilder {
         out.println("){");
         out.print("\t\tif(start");
         out.println("!= null) {");
-        out.print("\t\t\tand(new ");
+        out.print("\t\t\tand(new com.calm.entity.processor.");
         out.print(cond);
         out.print("QueryConditional(\"");
         out.print(fieldName);

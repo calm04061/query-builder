@@ -2,7 +2,7 @@ package com.calm.entity.processor;
 
 public class EndWithQueryConditional extends LikeQueryConditional {
 
-    EndWithQueryConditional(String field, Object... value) {
+    public EndWithQueryConditional(String field, Object... value) {
         super(field, value);
     }
 

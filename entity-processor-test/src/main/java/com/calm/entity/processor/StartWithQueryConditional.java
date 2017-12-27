@@ -2,7 +2,7 @@ package com.calm.entity.processor;
 
 public class StartWithQueryConditional extends LikeQueryConditional {
 
-    StartWithQueryConditional(String field, Object... value) {
+    public StartWithQueryConditional(String field, Object... value) {
         super(field, value);
     }
 

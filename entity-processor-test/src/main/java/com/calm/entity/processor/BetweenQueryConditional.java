@@ -4,7 +4,7 @@ public class BetweenQueryConditional implements QueryConditional {
     private final String field;
     private final Object[] value;
 
-    BetweenQueryConditional(String field, Object... value) {
+    public BetweenQueryConditional(String field, Object... value) {
         this.field = field;
         this.value = value;
     }
