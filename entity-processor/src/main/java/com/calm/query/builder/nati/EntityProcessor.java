@@ -1,9 +1,8 @@
 package com.calm.query.builder.nati;
 
-import javax.annotation.processing.AbstractProcessor;
-import javax.annotation.processing.RoundEnvironment;
-import javax.annotation.processing.SupportedAnnotationTypes;
-import javax.annotation.processing.SupportedSourceVersion;
+import com.google.auto.service.AutoService;
+
+import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
@@ -19,9 +18,10 @@ import java.util.*;
 @SupportedAnnotationTypes({
         "javax.persistence.Entity"
 })
+@AutoService(Processor.class)
 public class EntityProcessor extends AbstractProcessor {
 
-    private static final Map<String, Set<TypeBuilder>> typeSupport = new HashMap<>();
+    private final Map<String, Set<TypeBuilder>> TYPE_SUPPORT = new HashMap<>();
 
     public EntityProcessor() {
         ServiceLoader<MethodBuilder> load = ServiceLoader.load(MethodBuilder.class, EntityProcessor.class.getClassLoader());
@@ -32,7 +32,11 @@ public class EntityProcessor extends AbstractProcessor {
             for (SupportType supportType : value) {
                 String classType = supportType.classType();
                 String[] queryTypes = supportType.queryTypes();
-                Set<TypeBuilder> typeBuilders = typeSupport.computeIfAbsent(classType, k -> new HashSet<>());
+                Set<TypeBuilder> typeBuilders = TYPE_SUPPORT.get(classType);
+                if (typeBuilders == null) {
+                    typeBuilders = new HashSet<>();
+                    TYPE_SUPPORT.put(classType, typeBuilders);
+                }
                 for (String queryType : queryTypes) {
                     typeBuilders.add(new TypeBuilder(queryType, next));
                 }
@@ -106,7 +110,7 @@ public class EntityProcessor extends AbstractProcessor {
         for (Element element : elements) {
             VariableElement temp = (VariableElement) element;
             String type = temp.asType().toString();
-            Set<TypeBuilder> strings = typeSupport.get(type);
+            Set<TypeBuilder> strings = TYPE_SUPPORT.get(type);
             if (strings == null) {
                 continue;
             }

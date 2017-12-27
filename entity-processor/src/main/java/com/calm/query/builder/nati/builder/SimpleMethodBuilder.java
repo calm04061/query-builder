@@ -3,6 +3,7 @@ package com.calm.query.builder.nati.builder;
 import com.calm.query.builder.nati.MethodBuilder;
 import com.calm.query.builder.nati.Support;
 import com.calm.query.builder.nati.SupportType;
+import com.google.auto.service.AutoService;
 
 import java.io.PrintWriter;
 import java.text.MessageFormat;
@@ -12,6 +13,7 @@ import java.text.MessageFormat;
         @SupportType(classType = "java.lang.String", queryTypes = {"Eq", "StartWith", "EndWith"}),
         @SupportType(classType = "java.util.Date", queryTypes = {"Eq"}),
 })
+@AutoService(MethodBuilder.class)
 public class SimpleMethodBuilder implements MethodBuilder {
 
     @Override

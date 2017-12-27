@@ -3,13 +3,16 @@ package com.calm.query.builder.nati.builder;
 import com.calm.query.builder.nati.MethodBuilder;
 import com.calm.query.builder.nati.Support;
 import com.calm.query.builder.nati.SupportType;
+import com.google.auto.service.AutoService;
 
+import javax.annotation.processing.Processor;
 import java.io.PrintWriter;
 
 @Support({
         @SupportType(classType = "java.lang.Integer", queryTypes = {"Between"}),
         @SupportType(classType = "java.util.Date", queryTypes = {"Between"}),
 })
+@AutoService(MethodBuilder.class)
 public class BetweenMethodBuilder implements MethodBuilder {
 
     @Override

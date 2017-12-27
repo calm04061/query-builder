@@ -15,6 +15,22 @@
         <!-- 主要依赖库的版本定义 -->
 
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.google.auto.service</groupId>
+            <artifactId>auto-service</artifactId>
+            <version>1.0-rc4</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
 
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
