@@ -1,5 +1,6 @@
 package com.calm.entity.processor;
 
+import com.calm.entity.processor.conditional.QueryConditional;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;

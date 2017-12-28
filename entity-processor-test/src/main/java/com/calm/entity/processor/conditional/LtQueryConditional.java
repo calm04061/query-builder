@@ -1,4 +1,4 @@
-package com.calm.entity.processor;
+package com.calm.entity.processor.conditional;
 
 public class LtQueryConditional extends SimpleValueQueryConditional {
     public LtQueryConditional(String field, Object... value) {

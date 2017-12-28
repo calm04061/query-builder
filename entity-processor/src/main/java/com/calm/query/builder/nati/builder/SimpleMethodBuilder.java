@@ -6,14 +6,23 @@ import com.calm.query.builder.nati.SupportType;
 import com.google.auto.service.AutoService;
 
 import java.io.PrintWriter;
-import java.text.MessageFormat;
+import java.util.Date;
 
 @Support({
-        @SupportType(classType = "java.lang.Integer", queryTypes = {"Eq", "Lt", "Gt", "Ge", "Le"}),
-        @SupportType(classType = "java.lang.String", queryTypes = {"Eq", "StartWith", "EndWith"}),
-        @SupportType(classType = "java.lang.Long", queryTypes = {"Eq", "StartWith", "EndWith"}),
-        @SupportType(classType = "java.lang.Short", queryTypes = {"Eq", "StartWith", "EndWith"}),
-        @SupportType(classType = "java.util.Date", queryTypes = {"Eq"}),
+        @SupportType(classType = Integer.class, queryTypes = {"Eq", "Lt", "Gt", "Ge", "Le"}),
+        @SupportType(classType = int.class, queryTypes = {"Eq", "Lt", "Gt", "Ge", "Le"}),
+        @SupportType(classType = Long.class, queryTypes = {"Eq", "Lt", "Gt", "Ge", "Le"}),
+        @SupportType(classType = long.class, queryTypes = {"Eq", "Lt", "Gt", "Ge", "Le"}),
+        @SupportType(classType = Short.class, queryTypes = {"Eq", "Lt", "Gt", "Ge", "Le"}),
+        @SupportType(classType = short.class, queryTypes = {"Eq", "Lt", "Gt", "Ge", "Le"}),
+        @SupportType(classType = Double.class, queryTypes = {"Eq", "Lt", "Gt", "Ge", "Le"}),
+        @SupportType(classType = double.class, queryTypes = {"Eq", "Lt", "Gt", "Ge", "Le"}),
+        @SupportType(classType = Float.class, queryTypes = {"Eq", "Lt", "Gt", "Ge", "Le"}),
+        @SupportType(classType = float.class, queryTypes = {"Eq", "Lt", "Gt", "Ge", "Le"}),
+        @SupportType(classType = String.class, queryTypes = {"Eq", "StartWith", "EndWith"}),
+        @SupportType(classType = Date.class, queryTypes = {"Eq"}),
+        @SupportType(classType = Date.class, queryTypes = {"Eq"}),
+        @SupportType(classType = java.sql.Date.class, queryTypes = {"Eq"})
 })
 @AutoService(MethodBuilder.class)
 public class SimpleMethodBuilder implements MethodBuilder {
@@ -37,7 +46,7 @@ public class SimpleMethodBuilder implements MethodBuilder {
         out.print("\t\tif(");
         out.print(fieldName);
         out.println("!= null) {");
-        out.print("\t\t\tand(new com.calm.entity.processor.");
+        out.print("\t\t\tand(new com.calm.entity.processor.conditional.");
         out.print(cond);
         out.print("QueryConditional(\"");
         out.print(fieldName);

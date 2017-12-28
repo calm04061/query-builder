@@ -1,7 +1,7 @@
 //package com.calm.entity;
 //
 //
-//import com.calm.entity.processor.EqQueryConditional;
+//import com.calm.entity.processor.conditional.EqQueryConditional;
 //
 //public class UserBuilder extends com.calm.entity.processor.AbstractQueryBuilder implements com.calm.entity.processor.QueryBuilder {
 //    private UserBuilder() {

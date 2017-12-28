@@ -30,7 +30,7 @@ public class EntityProcessor extends AbstractProcessor {
             Support annotation = type.getAnnotation(Support.class);
             SupportType[] value = annotation.value();
             for (SupportType supportType : value) {
-                String classType = supportType.classType();
+                String classType = supportType.classType().getName();
                 String[] queryTypes = supportType.queryTypes();
                 Set<TypeBuilder> typeBuilders = TYPE_SUPPORT.get(classType);
                 if (typeBuilders == null) {

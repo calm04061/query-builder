@@ -9,7 +9,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target(TYPE)
 @Retention(RUNTIME)
 public @interface SupportType {
-    String classType();
+    Class<?> classType();
 
     String[] queryTypes();
 }

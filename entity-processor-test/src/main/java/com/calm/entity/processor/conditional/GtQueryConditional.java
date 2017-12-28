@@ -1,4 +1,4 @@
-package com.calm.entity.processor;
+package com.calm.entity.processor.conditional;
 
 public class GtQueryConditional extends SimpleValueQueryConditional {
     public GtQueryConditional(String field, Object... value) {

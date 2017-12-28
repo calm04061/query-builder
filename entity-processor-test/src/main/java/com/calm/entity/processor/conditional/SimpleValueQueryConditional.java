@@ -1,4 +1,4 @@
-package com.calm.entity.processor;
+package com.calm.entity.processor.conditional;
 
 public abstract class SimpleValueQueryConditional implements QueryConditional {
     private final String field;

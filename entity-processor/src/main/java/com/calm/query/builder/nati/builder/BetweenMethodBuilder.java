@@ -5,13 +5,22 @@ import com.calm.query.builder.nati.Support;
 import com.calm.query.builder.nati.SupportType;
 import com.google.auto.service.AutoService;
 
-import javax.annotation.processing.Processor;
 import java.io.PrintWriter;
+import java.util.Date;
 
 @Support({
-        @SupportType(classType = "java.lang.Integer", queryTypes = {"Between"}),
-        @SupportType(classType = "java.lang.Long", queryTypes = {"Between"}),
-        @SupportType(classType = "java.util.Date", queryTypes = {"Between"}),
+        @SupportType(classType = Integer.class, queryTypes = {"Between"}),
+        @SupportType(classType = int.class, queryTypes = {"Between"}),
+        @SupportType(classType = Long.class, queryTypes = {"Between"}),
+        @SupportType(classType = long.class, queryTypes = {"Between"}),
+        @SupportType(classType = Short.class, queryTypes = {"Between"}),
+        @SupportType(classType = short.class, queryTypes = {"Between"}),
+        @SupportType(classType = Double.class, queryTypes = {"Between"}),
+        @SupportType(classType = double.class, queryTypes = {"Between"}),
+        @SupportType(classType = Float.class, queryTypes = {"Between"}),
+        @SupportType(classType = float.class, queryTypes = {"Between"}),
+        @SupportType(classType = Date.class, queryTypes = {"Between"}),
+        @SupportType(classType = java.sql.Date.class, queryTypes = {"Between"}),
 })
 @AutoService(MethodBuilder.class)
 public class BetweenMethodBuilder implements MethodBuilder {
@@ -35,7 +44,7 @@ public class BetweenMethodBuilder implements MethodBuilder {
         out.println("){");
         out.print("\t\tif(start");
         out.println("!= null) {");
-        out.print("\t\t\tand(new com.calm.entity.processor.");
+        out.print("\t\t\tand(new com.calm.entity.processor.conditional.");
         out.print(cond);
         out.print("QueryConditional(\"");
         out.print(fieldName);

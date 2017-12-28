@@ -1,8 +1,8 @@
-package com.calm.entity.processor;
+package com.calm.entity.processor.conditional;
 
-public class StartWithQueryConditional extends LikeQueryConditional {
+public class EndWithQueryConditional extends LikeQueryConditional {
 
-    public StartWithQueryConditional(String field, Object... value) {
+    public EndWithQueryConditional(String field, Object... value) {
         super(field, value);
     }
 
@@ -11,7 +11,7 @@ public class StartWithQueryConditional extends LikeQueryConditional {
         Object[] args = super.getArgs();
         String[] result = new String[args.length];
         for (int i = 0; i < args.length; i++) {
-            result[i] = args[i] + "%";
+            result[i] = "%" + args[i];
         }
         return result;
     }
