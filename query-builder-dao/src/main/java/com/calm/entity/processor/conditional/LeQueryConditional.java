@@ -9,8 +9,4 @@ public class LeQueryConditional extends SimpleValueQueryConditional {
     protected String operate() {
         return "<=";
     }
-
-    public static void main(String[] args) {
-        System.out.println(int.class);
-    }
 }

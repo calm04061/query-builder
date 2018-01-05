@@ -9,7 +9,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>entity-processor</artifactId>
+    <artifactId>query-builder-processor</artifactId>
     <packaging>jar</packaging>
     <properties>
         <!-- 主要依赖库的版本定义 -->
